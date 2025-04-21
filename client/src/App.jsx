@@ -6,6 +6,7 @@ const App = () => {
     <>
       <div>App</div>
       <NavLink to={"/login"}>Login</NavLink>
+      <NavLink to={"/register"}>Register</NavLink>
     </>
   );
 };
