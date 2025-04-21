@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-primary-100: #030014;
+  --color-background: #f5f7f9;
 }
 
 @layer base {
@@ -9,5 +9,7 @@
 }
 
 @layer components {
-
+  login {
+    @apply w-full border rounded-xl
+  }
 }
