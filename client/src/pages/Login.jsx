@@ -1,7 +1,5 @@
 import React from "react";
 import GoogleIcon from "../components/GoogleIcon";
-import { NavLink } from "react-router";
-import ForgotPassword from "./ForgotPassword";
 
 const Login = () => {
   return (
@@ -39,9 +37,6 @@ const Login = () => {
             <span className="font-bold text-white">Log in</span>
           </button>
         </form>
-        <div className="text-center my-3 text-accent">
-          <NavLink to={"/forgot-password"}>Forgot password?</NavLink>
-        </div>
         <div className="relative my-3">
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-gray-200"></div>
@@ -56,12 +51,6 @@ const Login = () => {
           <GoogleIcon width={35} />
           <span>Google</span>
         </button>
-        <p className="text-center my-3">
-          Don't have account yet?{" "}
-          <NavLink to={"/register"}>
-            <span className="text-accent font-bold">Register here</span>
-          </NavLink>
-        </p>
       </div>
     </div>
   );
