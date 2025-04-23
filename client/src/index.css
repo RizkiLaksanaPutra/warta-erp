@@ -1,9 +1,9 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --color-background: #f5f7f9;
-  --text-accent: #009966;
+  --color-primary: #f5f7f9;
+  --text-seconday: #009966;
 }
 
 @layer base {
@@ -14,6 +14,6 @@
 
 @layer components {
   .auth-input {
-    @apply w-full border border-gray-400 rounded-md p-2;
+    @apply w-full border border-gray-300 rounded-md p-2 focus:outline-none;
   }
 }
