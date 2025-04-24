@@ -3,8 +3,9 @@ import GoogleIcon from "../components/GoogleIcon";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Alert from "../components/Alert";
+import { Navigate } from "react-router";
 
-const Login = () => {
+const Login = ({ user }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorCode, setErrorCode] = useState("");
@@ -25,7 +26,6 @@ const Login = () => {
       })
       .catch((error) => {
         const errorCode = error.code;
-        const errorMessage = error.message;
         setErrorCode(errorCode);
         if (errorCode === "auth/invalid-email") {
           setErrorMessage("Please input valid email");
@@ -34,6 +34,10 @@ const Login = () => {
         }
       });
   };
+
+  if (user) {
+    return <Navigate to={"/home"}></Navigate>;
+  }
 
   return (
     <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
