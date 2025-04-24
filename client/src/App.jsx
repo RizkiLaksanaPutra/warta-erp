@@ -25,7 +25,11 @@ const App = () => {
   }, []);
 
   if (isFetching) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="flex items-center justify-center">
+        <h1>Loading</h1>
+      </div>
+    );
   }
 
   return (
