@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import GoogleIcon from "../components/GoogleIcon";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import Alert from "../components/Alert";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorCode, setErrorCode] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -20,13 +22,16 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         setErrorCode(errorCode);
-        console.log(errorCode);
+        if (errorCode === "auth/invalid-email") {
+          setErrorMessage("Please input valid email");
+        } else if (errorCode === "auth/invalid-credential") {
+          setErrorMessage("Wrong password");
+        }
       });
   };
 
@@ -36,24 +41,7 @@ const Login = () => {
         <h1 className="text-2xl text-center font-bold my-8">
           Log in to your account
         </h1>
-        {/* {errorCode === "auth/invalid-email" ? (
-          <div className="rounded-md bg-red-50 p-4 my-4">
-            <div className="flex">
-              <div className="flex-0">
-                <svg className="h-5 w-5 text-red-400">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.28 7.22a.75.75 0 00-1.06 1.06L8.94 10l-1.72 1.72a.75.75 0 101.06 1.06L10 11.06l1.72 1.72a.75.75 0 101.06-1.06L11.06 10l1.72-1.72a.75.75 0 00-1.06-1.06L10 8.94 8.28 7.22z"
-                    clipRule="evenodd"
-                  ></path>
-                </svg>
-              </div>
-              <p className="text-sm font-medium text-red-800 ml-3">
-                The email must be a valid email address.
-              </p>
-            </div>
-          </div>
-        ) : null} */}
+        {errorCode ? <Alert props={errorMessage} /> : null}
         <form className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
             <label htmlFor="email">Email address</label>
