@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
+import Employee from "./pages/Employee";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -37,6 +38,14 @@ const App = () => {
             element={
               <ProtectedRoute user={user}>
                 <Dashboard></Dashboard>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/employee"
+            element={
+              <ProtectedRoute user={user}>
+                <Employee></Employee>
               </ProtectedRoute>
             }
           />
