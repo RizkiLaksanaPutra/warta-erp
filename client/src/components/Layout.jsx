@@ -15,7 +15,6 @@ const Layout = () => {
       <aside className="w-[15%] border border-black"></aside>
       <div className="w-[85%] flex flex-col">
         <nav className="border border-black flex items-center justify-between">
-          <p>Home</p>
           <button
             onClick={handleSignOut}
             className="cursor-pointer border border-black p-2 m-2 rounded-full"

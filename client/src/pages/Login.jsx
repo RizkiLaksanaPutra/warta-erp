@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GoogleIcon from "../components/GoogleIcon";
+import logo from "../assets/logo.svg";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router";
@@ -36,12 +37,13 @@ const Login = ({ user }) => {
   };
 
   if (user) {
-    return <Navigate to={"/home"}></Navigate>;
+    return <Navigate to={"/dashboard"}></Navigate>;
   }
 
   return (
     <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
       <div className="w-full sm:max-w-md p-6 sm:border border-black sm:rounded-lg ">
+        <img src={logo} alt="Logo" />
         <h1 className="text-2xl text-center font-bold my-8">
           Log in to your account
         </h1>
@@ -84,9 +86,7 @@ const Login = ({ user }) => {
             <div className="w-full border-t border-black"></div>
           </div>
           <div className="relative flex justify-center text-sm font-medium leading-6">
-            <span className="bg-white px-6 text-black">
-              Or continue with
-            </span>
+            <span className="bg-white px-6 text-black">Or continue with</span>
           </div>
         </div>
         <button

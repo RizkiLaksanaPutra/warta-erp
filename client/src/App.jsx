@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./libs/firebase";
 import Login from "./pages/Login";
-import Home from "./pages/Home";
+import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 
@@ -33,10 +33,10 @@ const App = () => {
         <Route path="/" element={<Login user={user} />} />
         <Route element={<Layout />}>
           <Route
-            path="/home"
+            path="/dashboard"
             element={
               <ProtectedRoute user={user}>
-                <Home></Home>
+                <Dashboard></Dashboard>
               </ProtectedRoute>
             }
           />
