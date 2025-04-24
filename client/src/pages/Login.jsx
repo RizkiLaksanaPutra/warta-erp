@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import GoogleIcon from "../components/GoogleIcon";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import Alert from "../components/Alert";
 import { Navigate } from "react-router";
+import Alert from "../components/Alert";
 
 const Login = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -41,7 +41,7 @@ const Login = ({ user }) => {
 
   return (
     <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-      <div className="bg-white w-full sm:max-w-md p-6 sm:border border-gray-300 sm:rounded-lg ">
+      <div className="w-full sm:max-w-md p-6 sm:border border-black sm:rounded-lg ">
         <h1 className="text-2xl text-center font-bold my-8">
           Log in to your account
         </h1>
@@ -74,17 +74,17 @@ const Login = ({ user }) => {
           <button
             type="button"
             onClick={handleSignIn}
-            className="w-full bg-emerald-700 p-1 rounded-md cursor-pointer"
+            className="w-full bg-black p-1 rounded-md cursor-pointer"
           >
             <span className="font-bold text-white">Log in</span>
           </button>
         </form>
         <div className="relative my-3">
           <div className="absolute inset-0 flex items-center">
-            <div className="w-full border-t border-gray-200"></div>
+            <div className="w-full border-t border-black"></div>
           </div>
           <div className="relative flex justify-center text-sm font-medium leading-6">
-            <span className="bg-white px-6 text-gray-400">
+            <span className="bg-white px-6 text-black">
               Or continue with
             </span>
           </div>
@@ -92,7 +92,7 @@ const Login = ({ user }) => {
         <button
           type="button"
           onClick={handleSignIn}
-          className="flex items-center justify-center w-full cursor-pointer border border-gray-300 rounded-md"
+          className="flex items-center justify-center w-full cursor-pointer border border-black rounded-md"
         >
           <GoogleIcon width={35} />
           <span>Google</span>

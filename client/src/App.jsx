@@ -5,6 +5,7 @@ import { auth } from "./libs/firebase";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -30,14 +31,16 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login user={user} />} />
-        <Route
-          path="/home"
-          element={
-            <ProtectedRoute user={user}>
-              <Home></Home>
-            </ProtectedRoute>
-          }
-        />
+        <Route element={<Layout />}>
+          <Route
+            path="/home"
+            element={
+              <ProtectedRoute user={user}>
+                <Home></Home>
+              </ProtectedRoute>
+            }
+          />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
