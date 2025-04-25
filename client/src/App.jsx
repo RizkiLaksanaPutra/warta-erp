@@ -7,6 +7,9 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Layout from "./components/Layout";
 import Employee from "./pages/Employee";
+import Revenue from "./pages/Revenue";
+import Expenses from "./pages/Expenses";
+import Inventory from "./pages/Inventory";
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -42,6 +45,30 @@ const App = () => {
             element={
               <ProtectedRoute user={user}>
                 <Dashboard></Dashboard>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/revenue"
+            element={
+              <ProtectedRoute user={user}>
+                <Revenue></Revenue>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/expenses"
+            element={
+              <ProtectedRoute user={user}>
+                <Expenses></Expenses>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/inventory"
+            element={
+              <ProtectedRoute user={user}>
+                <Inventory></Inventory>
               </ProtectedRoute>
             }
           />

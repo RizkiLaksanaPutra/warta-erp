@@ -43,10 +43,7 @@ const Layout = () => {
       </aside>
       <div className="w-[85%] flex flex-col">
         <nav className="border border-black flex items-center justify-between">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe,
-            natus!
-          </p>
+          <p>Navbar</p>
         </nav>
         <main className="h-full border border-black">
           <Outlet />
