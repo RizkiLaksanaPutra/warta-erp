@@ -19,6 +19,19 @@ const Layout = () => {
       .catch((error) => console.log(error));
   };
 
+  const handleGreet = () => {
+    const hours = new Date().getHours();
+    if (hours >= 5 && hours < 12) {
+      return "Selamat Pagi";
+    } else if (hours >= 12 && hours < 15) {
+      return "Selamat Siang";
+    } else if (hours >= 15 && hours < 18) {
+      return "Selamat Sore";
+    } else {
+      return "Selamat Malam";
+    }
+  };
+
   return (
     <div className="w-screen h-screen flex">
       <aside className="w-[15%] h-full flex flex-col justify-between border border-black">
@@ -42,8 +55,8 @@ const Layout = () => {
         </button>
       </aside>
       <div className="w-[85%] flex flex-col">
-        <nav className="border border-black flex items-center justify-between">
-          <p>Navbar</p>
+        <nav className="border border-black flex items-center justify-between p-2">
+          <p>{handleGreet()}</p>
         </nav>
         <main className="h-full border border-black">
           <Outlet />
