@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import GoogleIcon from "../components/GoogleIcon";
 import logo from "../assets/logo.svg";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { Navigate } from "react-router";
+import { Navigate, useNavigate } from "react-router";
 import Alert from "../components/Alert";
+import { UserContext } from "../context/Context";
 
 const Login = ({ user }) => {
+  const redirect = useNavigate() 
+  const [_, setUser] = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorCode, setErrorCode] = useState("");
@@ -24,6 +27,7 @@ const Login = ({ user }) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
+        location.href = "/dashboard"
       })
       .catch((error) => {
         const errorCode = error.code;
