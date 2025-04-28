@@ -1,16 +1,24 @@
 import React from "react";
 import logo from "../assets/logo.svg";
-import { Outlet } from "react-router";
+import {
+  PiSignOut,
+  PiChartDonutLight,
+  PiUsersThreeLight,
+  PiPackageLight,
+  PiTrendUpLight,
+  PiTrendDownLight,
+} from "react-icons/pi";
+import { Link, Outlet } from "react-router";
 import { auth } from "../libs/firebase";
 import { signOut } from "firebase/auth";
 
 const Layout = () => {
   const SIDEBARMENU = [
-    { menu: "Dashboard", path: "/dashboard" },
-    { menu: "Revenue", path: "/revenue" },
-    { menu: "Expenses", path: "/expenses" },
-    { menu: "Inventory", path: "/inventory" },
-    { menu: "Employee", path: "/employee" },
+    { menu: "Dashboard", path: "/dashboard", icon: <PiChartDonutLight /> },
+    { menu: "Revenue", path: "/revenue", icon: <PiTrendUpLight /> },
+    { menu: "Expenses", path: "/expenses", icon: <PiTrendDownLight /> },
+    { menu: "Inventory", path: "/inventory", icon: <PiPackageLight /> },
+    { menu: "Employee", path: "/employee", icon: <PiUsersThreeLight /> },
   ];
 
   const handleSignOut = () => {
@@ -34,31 +42,33 @@ const Layout = () => {
 
   return (
     <div className="w-screen h-screen flex">
-      <aside className="w-[15%] h-full flex flex-col justify-between border border-black">
-        <img src={logo} alt="Logo" className="p-3" />
-        <div className="flex flex-col flex-1">
+      <aside className="w-[15%] h-full flex flex-col justify-between gap-6 bg-gray-100 p-4">
+        <img src={logo} alt="Logo" className="p-4" />
+        <div className="flex flex-col flex-1 gap-4">
           {SIDEBARMENU.map((item) => (
-            <button
+            <Link
               key={item.path}
-              onClick={() => (window.location.href = item.path)}
-              className="p-2 m-2 border border-b-black cursor-pointer"
+              to={item.path}
+              className="pl-6 py-3 text-lg flex items-center gap-3 cursor-pointer hover:bg-blue-300 hover:text-white rounded-lg transition-all"
             >
+              {item.icon}
               {item.menu}
-            </button>
+            </Link>
           ))}
         </div>
         <button
           onClick={handleSignOut}
-          className="cursor-pointer border border-black p-2 m-2"
+          className="cursor-pointer border flex items-center p-3 gap-3 text-lg border-red-700 text-red-700 hover:bg-red-700 hover:text-white rounded-lg transition-all"
         >
+          <PiSignOut />
           Sign Out
         </button>
       </aside>
       <div className="w-[85%] flex flex-col">
-        <nav className="border border-black flex items-center justify-between p-2">
-          <p>{handleGreet()}</p>
+        <nav className="border-b border-gray-300 flex items-center justify-between p-4 bg-white shadow-md">
+          <p className="text-lg font-semibold">{handleGreet()}</p>
         </nav>
-        <main className="h-full border border-black">
+        <main className="h-full p-6 bg-gray-50">
           <Outlet />
         </main>
       </div>

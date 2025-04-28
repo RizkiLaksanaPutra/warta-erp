@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import GoogleIcon from "../components/GoogleIcon";
+import { useState } from "react";
 import logo from "../assets/logo.svg";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router";
 import Alert from "../components/Alert";
+import GoogleIcon from "../components/GoogleIcon";
 
 const Login = ({ user }) => {
   const [email, setEmail] = useState("");
@@ -48,7 +48,14 @@ const Login = ({ user }) => {
           Log in to your account
         </h1>
         {errorCode ? <Alert props={errorMessage} /> : null}
-        <form className="flex flex-col gap-4">
+        <form
+          className="flex flex-col gap-4"
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              handleSignIn();
+            }
+          }}
+        >
           <div className="flex flex-col gap-2">
             <label htmlFor="email">Email address</label>
             <input
