@@ -4,6 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router";
 import Alert from "../components/Alert";
 import { UserContext } from "../context/Context";
+import logo from "../assets/logo.svg";
+import GoogleIcon from "../components/Icons/GoogleIcon";
 
 const Login = () => {
   const user = useContext(UserContext);
@@ -34,10 +36,10 @@ const Login = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0">
-      <div className="w-full sm:max-w-md p-6 sm:border border-black sm:rounded-lg ">
+    <div className="flex min-h-screen flex-col items-center pt-6 sm:justify-center sm:pt-0">
+      <div className="w-full border-black p-6 sm:max-w-md sm:rounded-lg sm:border">
         <img src={logo} alt="Logo" />
-        <h1 className="text-2xl text-center font-bold my-8">
+        <h1 className="my-8 text-center text-2xl font-bold">
           Log in to your account
         </h1>
         {errorCode ? <Alert props={errorMessage} /> : null}
@@ -57,7 +59,7 @@ const Login = () => {
               type="email"
               placeholder="user@gmail.com"
               required={true}
-              className="auth-input"
+              className="w-full rounded-md border border-black p-2 focus:outline-none"
               onChange={handleEmailChange}
             />
           </div>
@@ -69,14 +71,14 @@ const Login = () => {
               type="password"
               placeholder="••••••••"
               required={true}
-              className="auth-input"
+              className="w-full rounded-md border border-black p-2 focus:outline-none"
               onChange={handlePasswordChange}
             />
           </div>
           <button
             type="button"
             onClick={handleSignIn}
-            className="w-full bg-black p-1 rounded-md cursor-pointer"
+            className="w-full cursor-pointer rounded-md bg-black p-1"
           >
             <span className="font-bold text-white">Log in</span>
           </button>
@@ -85,14 +87,14 @@ const Login = () => {
           <div className="absolute inset-0 flex items-center">
             <div className="w-full border-t border-black"></div>
           </div>
-          <div className="relative flex justify-center text-sm font-medium leading-6">
+          <div className="relative flex justify-center text-sm leading-6 font-medium">
             <span className="bg-white px-6 text-black">Or continue with</span>
           </div>
         </div>
         <button
           type="button"
           onClick={handleSignIn}
-          className="flex items-center justify-center w-full cursor-pointer border border-black rounded-md"
+          className="flex w-full cursor-pointer items-center justify-center rounded-md border border-black"
         >
           <GoogleIcon width={35} />
           <span>Google</span>

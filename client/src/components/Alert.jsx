@@ -1,8 +1,8 @@
 import React from "react";
 
-const Alert = ({props}) => {
+const Alert = ({ props }) => {
   return (
-    <div className="rounded-md bg-slate-50 p-4 my-4">
+    <div className="my-4 rounded-md bg-slate-50 p-4">
       <div className="flex">
         <div className="flex-0">
           <svg className="h-5 w-5 text-black">
@@ -13,9 +13,7 @@ const Alert = ({props}) => {
             ></path>
           </svg>
         </div>
-        <p className="text-sm font-medium text-black ml-3">
-          {props}
-        </p>
+        <p className="ml-3 text-sm font-medium text-black">{props}</p>
       </div>
     </div>
   );
