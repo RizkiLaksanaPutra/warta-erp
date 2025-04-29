@@ -1,30 +1,23 @@
-import { useState } from "react";
-import logo from "../assets/logo.svg";
+import { useState, useContext } from "react";
 import { auth } from "../libs/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { Navigate } from "react-router";
 import Alert from "../components/Alert";
-import GoogleIcon from "../components/GoogleIcon";
+import { UserContext } from "../context/Context";
 
-const Login = ({ user }) => {
+const Login = () => {
+  const user = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorCode, setErrorCode] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleEmailChange = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const handlePasswordChange = (e) => {
-    setPassword(e.target.value);
-  };
+  const handleEmailChange = (e) => setEmail(e.target.value);
+  const handlePasswordChange = (e) => setPassword(e.target.value);
 
   const handleSignIn = () => {
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-      })
+      .then((userCredential) => {})
       .catch((error) => {
         const errorCode = error.code;
         setErrorCode(errorCode);
@@ -37,7 +30,7 @@ const Login = ({ user }) => {
   };
 
   if (user) {
-    return <Navigate to={"/dashboard"}></Navigate>;
+    return <Navigate to={"/dashboard"} />;
   }
 
   return (

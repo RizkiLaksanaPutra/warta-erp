@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import logo from "../assets/logo.svg";
 import {
   PiSignOut,
@@ -11,8 +11,13 @@ import {
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { auth } from "../libs/firebase";
 import { signOut } from "firebase/auth";
+import { useContext } from "react";
+import { UserContext } from "../context/Context";
+import ChartIcon from "./ChartIcon";
+import LoadingIcon from "./LoadingIcon";
 
 const Layout = () => {
+  const user = useContext(UserContext);
   const location = useLocation();
 
   const SIDEBARMENU = [
@@ -77,9 +82,8 @@ const Layout = () => {
         <nav className="border-b border-gray-200 bg-white p-5 shadow-sm flex items-center justify-between">
           <p className="text-lg font-semibold">{handleGreet()}</p>
         </nav>
-
         <main className="flex-1 p-6 bg-gray-50 overflow-y-auto">
-          <Outlet />
+          {user ? <Outlet /> : <LoadingIcon />}
         </main>
       </div>
     </div>
