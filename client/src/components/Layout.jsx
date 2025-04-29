@@ -8,11 +8,13 @@ import {
   PiTrendUpLight,
   PiTrendDownLight,
 } from "react-icons/pi";
-import { Link, Outlet } from "react-router";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import { auth } from "../libs/firebase";
 import { signOut } from "firebase/auth";
 
 const Layout = () => {
+  const location = useLocation();
+
   const SIDEBARMENU = [
     { menu: "Dashboard", path: "/dashboard", icon: <PiChartDonutLight /> },
     { menu: "Revenue", path: "/revenue", icon: <PiTrendUpLight /> },
@@ -41,34 +43,42 @@ const Layout = () => {
   };
 
   return (
-    <div className="w-screen h-screen flex">
-      <aside className="w-[15%] h-full flex flex-col justify-between gap-6 bg-gray-100 p-4">
-        <img src={logo} alt="Logo" className="p-4" />
-        <div className="flex flex-col flex-1 gap-4">
+    <div className="w-screen h-screen flex font-sans text-gray-800">
+      <aside className="w-[15%] h-full flex flex-col justify-between bg-white shadow-md p-6 gap-6">
+        <img src={logo} alt="Logo" className="p-2 mb-4" />
+
+        <nav className="flex flex-col flex-1 gap-2">
           {SIDEBARMENU.map((item) => (
             <Link
               key={item.path}
               to={item.path}
-              className="pl-6 py-3 text-lg flex items-center gap-3 cursor-pointer hover:bg-blue-300 hover:text-white rounded-lg transition-all"
+              className={`pl-5 pr-3 py-3 text-lg rounded-xl flex items-center gap-3 transition-all duration-200 ${
+                location.pathname === item.path
+                  ? "bg-blue-500 text-white"
+                  : "hover:bg-blue-100 hover:text-blue-600"
+              }`}
             >
               {item.icon}
               {item.menu}
             </Link>
           ))}
-        </div>
+        </nav>
+
         <button
           onClick={handleSignOut}
-          className="cursor-pointer border flex items-center p-3 gap-3 text-lg border-red-700 text-red-700 hover:bg-red-700 hover:text-white rounded-lg transition-all"
+          className="flex items-center gap-3 px-4 py-3 text-md font-medium text-red-600 hover:bg-red-100 hover:text-red-700 rounded-lg transition-all duration-200"
         >
           <PiSignOut />
           Sign Out
         </button>
       </aside>
+
       <div className="w-[85%] flex flex-col">
-        <nav className="border-b border-gray-300 flex items-center justify-between p-4 bg-white shadow-md">
+        <nav className="border-b border-gray-200 bg-white p-5 shadow-sm flex items-center justify-between">
           <p className="text-lg font-semibold">{handleGreet()}</p>
         </nav>
-        <main className="h-full p-6 bg-gray-50">
+
+        <main className="flex-1 p-6 bg-gray-50 overflow-y-auto">
           <Outlet />
         </main>
       </div>
