@@ -52,7 +52,7 @@ const Layout = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`pl-5 pr-3 py-3 text-lg rounded-xl flex items-center gap-3 transition-all duration-200 ${
+              className={`pl-5 pr-3 py-3 text-lg rounded-xl flex items-center gap-3 transition-all ${
                 location.pathname === item.path
                   ? "bg-blue-500 text-white"
                   : "hover:bg-blue-100 hover:text-blue-600"
@@ -66,7 +66,7 @@ const Layout = () => {
 
         <button
           onClick={handleSignOut}
-          className="flex items-center gap-3 px-4 py-3 text-md font-medium text-red-600 hover:bg-red-100 hover:text-red-700 rounded-lg transition-all duration-200"
+          className="flex items-center gap-3 px-4 py-3 font-medium text-red-600 hover:bg-red-100 hover:text-red-700 rounded-lg transition-all cursor-pointer"
         >
           <PiSignOut />
           Sign Out

@@ -8,6 +8,8 @@ const Dashboard = () => {
       <div className="rounded-lg flex gap-4">
         <ScoreCard />
         <ScoreCard />
+        <ScoreCard />
+        <ScoreCard />
       </div>
     </div>
   );
