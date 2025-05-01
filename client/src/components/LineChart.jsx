@@ -40,10 +40,7 @@ const data = {
   datasets: [
     {
       label: "Revenue (Rp)",
-      data: [
-        10000000, 10000000, 10000000, 10000000, 10000000, 20000000, 22000000,
-        21000000, 25000000, 27000000, 30000000, 15000000,
-      ],
+      data: [1, 2, 3, 3, 4, 7, 6, 5, 4, 7, 5, 3],
       borderColor: "rgb(34, 197, 94)",
       backgroundColor: "rgba(34, 197, 94, 0.2)",
       pointRadius: 5,
@@ -52,6 +49,8 @@ const data = {
 };
 
 const options = {
+  responsive: true,
+  maintainAspectRatio: false,
   plugins: {
     legend: {
       position: "top",
@@ -64,13 +63,14 @@ const options = {
   scales: {
     y: {
       beginAtZero: true,
+      grace: "5%",
     },
   },
 };
 
 const ChartComponent = () => {
   return (
-    <div className="rounded-2xl bg-white p-2 shadow">
+    <div className="relative mx-auto h-[250px] w-full rounded-md border-gray-200 bg-white p-2 shadow">
       <Line data={data} options={options} />
     </div>
   );

@@ -112,7 +112,7 @@ const Layout = () => {
       </aside>
 
       {/* Sidebar for Mobile */}
-      <div className="absolute top-4 left-4 z-50 md:hidden">
+      <div className="absolute top-0 left-0 z-50 md:hidden">
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
           className="rounded bg-white p-2 text-2xl shadow"
@@ -122,7 +122,7 @@ const Layout = () => {
       </div>
 
       {sidebarOpen && (
-        <aside className="fixed inset-y-0 left-0 z-40 flex w-64 flex-col justify-between bg-slate-200 p-6 shadow-md">
+        <aside className="fixed inset-y-0 left-0 z-40 flex w-full flex-col justify-between bg-slate-200 p-6 shadow-md">
           <div>
             <img
               src={logo}
@@ -164,7 +164,7 @@ const Layout = () => {
 
       {/* Main Content */}
       <main className="flex flex-1 flex-col overflow-hidden bg-slate-200">
-        <div className="m-6 flex-1 overflow-y-auto rounded-md bg-white p-5">
+        <div className="sm:m-6 flex-1 overflow-y-auto rounded-md bg-white p-5">
           <Outlet />
         </div>
       </main>
