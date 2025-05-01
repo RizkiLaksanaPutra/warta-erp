@@ -1,12 +1,12 @@
 import logo from "../assets/logo.svg";
 import {
   PiSignOut,
-  PiChartDonutLight,
-  PiUsersThreeLight,
-  PiPackageLight,
-  PiTrendUpLight,
-  PiTrendDownLight,
-  PiChartDonutBold,
+  PiSquaresFourThin,
+  PiUsersThreeThin,
+  PiPackageThin,
+  PiTrendUpThin,
+  PiTrendDownThin,
+  PiSquaresFourBold,
   PiTrendUpBold,
   PiTrendDownBold,
   PiPackageBold,
@@ -24,15 +24,15 @@ const Layout = () => {
       menu: "Dashboard",
       path: "/dashboard",
       icon: {
-        normal: <PiChartDonutLight />,
-        active: <PiChartDonutBold />,
+        normal: <PiSquaresFourThin />,
+        active: <PiSquaresFourBold />,
       },
     },
     {
       menu: "Revenue",
       path: "/revenue",
       icon: {
-        normal: <PiTrendUpLight />,
+        normal: <PiTrendUpThin />,
         active: <PiTrendUpBold />,
       },
     },
@@ -40,7 +40,7 @@ const Layout = () => {
       menu: "Expenses",
       path: "/expenses",
       icon: {
-        normal: <PiTrendDownLight />,
+        normal: <PiTrendDownThin />,
         active: <PiTrendDownBold />,
       },
     },
@@ -48,7 +48,7 @@ const Layout = () => {
       menu: "Inventory",
       path: "/inventory",
       icon: {
-        normal: <PiPackageLight />,
+        normal: <PiPackageThin />,
         active: <PiPackageBold />,
       },
     },
@@ -56,7 +56,7 @@ const Layout = () => {
       menu: "Employee",
       path: "/employee",
       icon: {
-        normal: <PiUsersThreeLight />,
+        normal: <PiUsersThreeThin />,
         active: <PiUsersThreeBold />,
       },
     },
@@ -86,8 +86,8 @@ const Layout = () => {
                 to={item.path}
                 className={`flex items-center gap-3 rounded-sm py-3 pl-3 transition-all duration-200 ${
                   isActive
-                    ? "bg-white font-semibold shadow-md"
-                    : "hover:bg-slate-100 hover:shadow-sm"
+                    ? "bg-white font-semibold shadow"
+                    : "hover:bg-slate-100"
                 }`}
               >
                 <span className="flex items-center justify-center">
@@ -101,15 +101,15 @@ const Layout = () => {
 
         <button
           onClick={handleSignOut}
-          className="flex cursor-pointer items-center gap-3 rounded-lg bg-slate-100 py-3 pl-3 shadow-sm transition-all hover:text-red-700 hover:shadow-lg"
+          className="flex cursor-pointer items-center gap-3 rounded-sm bg-slate-100 py-3 pl-3 leading-none shadow-sm transition-all hover:text-red-700 hover:shadow-lg"
         >
           <PiSignOut />
           Sign Out
         </button>
       </aside>
 
-      <main className="flex w-[85%] flex-col">
-        <div className="flex-1 overflow-y-auto p-5">
+      <main className="flex w-[85%] flex-col bg-slate-200">
+        <div className="flex-1 overflow-y-auto bg-white m-6 p-5 rounded-md">
           <Outlet />
         </div>
       </main>
