@@ -11,13 +11,17 @@ import {
   PiTrendDownBold,
   PiPackageBold,
   PiUsersThreeBold,
+  PiListBold,
+  PiXBold,
 } from "react-icons/pi";
 import { Link, Outlet, useLocation } from "react-router-dom";
 import { auth } from "../libs/firebase";
 import { signOut } from "firebase/auth";
+import { useState } from "react";
 
 const Layout = () => {
   const location = useLocation();
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const SIDEBARMENU = [
     {
@@ -70,7 +74,8 @@ const Layout = () => {
 
   return (
     <div className="flex h-screen w-screen font-sans">
-      <aside className="flex h-full w-[15%] flex-col justify-between gap-6 bg-slate-200 p-6 shadow-sm">
+      {/* Sidebar for Desktop */}
+      <aside className="hidden h-full w-[15%] flex-col justify-between gap-6 bg-slate-200 p-6 shadow-sm md:flex">
         <img
           src={logo}
           alt="Logo"
@@ -90,10 +95,8 @@ const Layout = () => {
                     : "hover:bg-slate-100"
                 }`}
               >
-                <span className="flex items-center justify-center">
-                  {isActive ? item.icon.active : item.icon.normal}
-                </span>
-                <span className="leading-none">{item.menu}</span>
+                <span>{isActive ? item.icon.active : item.icon.normal}</span>
+                <span>{item.menu}</span>
               </Link>
             );
           })}
@@ -101,15 +104,67 @@ const Layout = () => {
 
         <button
           onClick={handleSignOut}
-          className="flex cursor-pointer items-center gap-3 rounded-sm bg-slate-100 py-3 pl-3 leading-none shadow-sm transition-all hover:text-red-700 hover:shadow-lg"
+          className="flex items-center gap-3 rounded-sm bg-slate-100 py-3 pl-3 shadow-sm transition-all hover:text-red-700 hover:shadow-lg"
         >
           <PiSignOut />
           Sign Out
         </button>
       </aside>
 
-      <main className="flex w-[85%] flex-col bg-slate-200">
-        <div className="flex-1 overflow-y-auto bg-white m-6 p-5 rounded-md">
+      {/* Sidebar for Mobile */}
+      <div className="absolute top-4 left-4 z-50 md:hidden">
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          className="rounded bg-white p-2 text-2xl shadow"
+        >
+          {sidebarOpen ? <PiXBold /> : <PiListBold />}
+        </button>
+      </div>
+
+      {sidebarOpen && (
+        <aside className="fixed inset-y-0 left-0 z-40 flex w-64 flex-col justify-between bg-slate-200 p-6 shadow-md">
+          <div>
+            <img
+              src={logo}
+              alt="Logo"
+              className="mb-6 rounded-md bg-white p-3 shadow-md"
+            />
+            <nav className="flex flex-col gap-2">
+              {SIDEBARMENU.map((item) => {
+                const isActive = location.pathname === item.path;
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setSidebarOpen(false)}
+                    className={`flex items-center gap-3 rounded-sm py-3 pl-3 transition-all duration-200 ${
+                      isActive
+                        ? "bg-white font-semibold shadow"
+                        : "hover:bg-slate-100"
+                    }`}
+                  >
+                    <span>
+                      {isActive ? item.icon.active : item.icon.normal}
+                    </span>
+                    <span>{item.menu}</span>
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
+          <button
+            onClick={handleSignOut}
+            className="flex items-center gap-3 rounded-sm bg-slate-100 py-3 pl-3 shadow-sm transition-all hover:text-red-700 hover:shadow-lg"
+          >
+            <PiSignOut />
+            Sign Out
+          </button>
+        </aside>
+      )}
+
+      {/* Main Content */}
+      <main className="flex flex-1 flex-col overflow-hidden bg-slate-200">
+        <div className="m-6 flex-1 overflow-y-auto rounded-md bg-white p-5">
           <Outlet />
         </div>
       </main>
