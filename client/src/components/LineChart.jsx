@@ -21,7 +21,7 @@ ChartJS.register(
   Legend,
 );
 
-export const options = {
+const options = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -34,9 +34,14 @@ export const options = {
     },
   },
   scales: {
-    y: {
+    x: {
       beginAtZero: true,
       grace: "5%",
+      ticks: {
+        autoSkip: true,
+        maxRotation: 90,
+        minRotation: 0,
+      },
     },
   },
 };
@@ -56,7 +61,7 @@ const labels = [
   "Dec",
 ];
 
-export const data = {
+const data = {
   labels,
   datasets: [
     {
@@ -83,7 +88,6 @@ export const data = {
   ],
 };
 
-// Komponen Chart
 const ChartComponent = () => {
   return (
     <div className="relative mx-auto h-[300px] w-full rounded-md border border-gray-200 bg-white p-4 shadow">
