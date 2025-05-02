@@ -11,25 +11,25 @@ const Dashboard = () => {
       </h1>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         <ScoreCard
-          title="Revenue"
+          title="Total Revenue"
           value="Rp 100.000.000"
           percentage="+36%"
           positive={true}
         />
         <ScoreCard
-          title="Expenses"
+          title="Total Expenses"
           value="Rp 60.000.000"
           percentage="-15%"
           positive={false}
         />
         <ScoreCard
-          title="Profit"
+          title="Total Profit"
           value="40.000.000"
           percentage="+10%"
           positive={true}
         />
         <ScoreCard
-          title="Transaction"
+          title="Total Transaction"
           value="152"
           percentage="+5%"
           positive={true}
@@ -39,9 +39,6 @@ const Dashboard = () => {
         <LineChart />
         <LineChart />
         <LineChart />
-      </div>
-      <div className="grid grid-cols-4 gap-2">
-        <PieChart />
       </div>
     </div>
   );

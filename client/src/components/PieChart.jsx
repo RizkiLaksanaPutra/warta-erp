@@ -27,7 +27,7 @@ const data = {
 const PieChart = () => {
   return (
     <div className="relative mx-auto h-[250px] w-full rounded-md border-gray-200 bg-white p-2 shadow">
-      <Pie data={data} />;
+      <Pie data={data} />
     </div>
   );
 };

@@ -21,34 +21,7 @@ ChartJS.register(
   Legend,
 );
 
-const data = {
-  labels: [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec",
-  ],
-
-  datasets: [
-    {
-      label: "Revenue (Rp)",
-      data: [1, 2, 3, 3, 4, 7, 6, 5, 4, 7, 5, 3],
-      borderColor: "rgb(34, 197, 94)",
-      backgroundColor: "rgba(34, 197, 94, 0.2)",
-      pointRadius: 5,
-    },
-  ],
-};
-
-const options = {
+export const options = {
   responsive: true,
   maintainAspectRatio: false,
   plugins: {
@@ -57,7 +30,7 @@ const options = {
     },
     title: {
       display: true,
-      text: `Revenue per Month in ${new Date().getFullYear()}`,
+      text: `Revenue per Outlet - ${new Date().getFullYear()}`,
     },
   },
   scales: {
@@ -68,9 +41,52 @@ const options = {
   },
 };
 
+const labels = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+
+export const data = {
+  labels,
+  datasets: [
+    {
+      label: "Warung Nasi",
+      data: [10, 12, 8, 15, 9, 11, 13, 14, 12, 10, 9, 13],
+      borderColor: "rgb(34, 197, 94)",
+      backgroundColor: "rgba(34, 197, 94, 0.4)",
+      tension: 0.4,
+    },
+    {
+      label: "Sambal Dadak 1",
+      data: [8, 9, 11, 10, 12, 13, 12, 11, 10, 9, 8, 10],
+      borderColor: "rgb(59, 130, 246)",
+      backgroundColor: "rgba(59, 130, 246, 0.4)",
+      tension: 0.4,
+    },
+    {
+      label: "Sambal Dadak 2",
+      data: [5, 6, 4, 7, 5, 6, 5, 7, 6, 5, 6, 7],
+      borderColor: "rgb(249, 115, 22)",
+      backgroundColor: "rgba(249, 115, 22, 0.4)",
+      tension: 0.4,
+    },
+  ],
+};
+
+// Komponen Chart
 const ChartComponent = () => {
   return (
-    <div className="relative mx-auto h-[250px] w-full rounded-md border-gray-200 bg-white p-2 shadow">
+    <div className="relative mx-auto h-[300px] w-full rounded-md border border-gray-200 bg-white p-4 shadow">
       <Line data={data} options={options} />
     </div>
   );

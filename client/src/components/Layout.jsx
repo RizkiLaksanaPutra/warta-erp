@@ -74,7 +74,6 @@ const Layout = () => {
 
   return (
     <div className="flex h-screen w-screen font-sans">
-      {/* Sidebar for Desktop */}
       <aside className="hidden h-full w-[15%] flex-col justify-between gap-6 bg-slate-200 p-6 shadow-sm md:flex">
         <img
           src={logo}
@@ -111,7 +110,6 @@ const Layout = () => {
         </button>
       </aside>
 
-      {/* Sidebar for Mobile */}
       <div className="absolute top-0 left-0 z-50 md:hidden">
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
@@ -162,7 +160,6 @@ const Layout = () => {
         </aside>
       )}
 
-      {/* Main Content */}
       <main className="flex flex-1 flex-col overflow-hidden bg-slate-200">
         <div className="sm:m-6 flex-1 overflow-y-auto rounded-md bg-white p-5">
           <Outlet />
