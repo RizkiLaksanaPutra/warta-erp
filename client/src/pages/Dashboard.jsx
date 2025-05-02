@@ -1,6 +1,7 @@
 import React from "react";
 import ScoreCard from "../components/ScoreCard";
 import LineChart from "../components/LineChart";
+import PieChart from "../components/PieChart";
 
 const Dashboard = () => {
   return (
@@ -8,7 +9,7 @@ const Dashboard = () => {
       <h1 className="text-center text-2xl font-semibold sm:text-left">
         Dashboard
       </h1>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         <ScoreCard
           title="Revenue"
           value="Rp 100.000.000"
@@ -22,21 +23,25 @@ const Dashboard = () => {
           positive={false}
         />
         <ScoreCard
-          title="Employees"
-          value="24 Orang"
+          title="Profit"
+          value="40.000.000"
           percentage="+10%"
           positive={true}
         />
         <ScoreCard
-          title="Inventory Items"
+          title="Transaction"
           value="152"
           percentage="+5%"
           positive={true}
         />
       </div>
-      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
         <LineChart />
         <LineChart />
+        <LineChart />
+      </div>
+      <div className="grid grid-cols-4 gap-2">
+        <PieChart />
       </div>
     </div>
   );
