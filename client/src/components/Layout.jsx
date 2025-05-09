@@ -75,7 +75,7 @@ const Layout = () => {
   return (
     <div className="flex h-screen w-screen font-sans">
       <aside
-        className={`absolute z-10 transition-[left] flex h-full w-full flex-col justify-between gap-6 bg-slate-200 p-6 md:relative md:left-0 md:w-[20%] xl:w-[15%] ${sidebarOpen ? "left-0" : "-left-full"}`}
+        className={`absolute z-10 flex h-full w-full flex-col justify-between gap-6 bg-slate-200 p-6 transition-[left] md:relative md:left-0 md:w-[20%] md:p-3 lg:p-6 xl:w-[15%] ${sidebarOpen ? "left-0" : "-left-full"}`}
       >
         <img
           src={logo}

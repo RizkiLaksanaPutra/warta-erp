@@ -7,7 +7,7 @@ import BarChart from "../components/BarChart";
 const Dashboard = () => {
   return (
     <div className="flex flex-col gap-6">
-      <h1 className="text-center text-2xl font-semibold sm:text-center">
+      <h1 className="text-center text-2xl font-semibold md:text-left">
         Dashboard
       </h1>
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
